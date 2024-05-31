@@ -2,29 +2,28 @@
 
 namespace App\Form;
 
-use App\Entity\Formation;
+use App\Entity\Experience;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 
-class FormationType extends AbstractType
+class ExperienceType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nomEtablissement')
-            ->add('villeEtablissement')
-            ->add('distanciel')
             ->add('dateD', DateType::class, [
                 'widget' => 'single_text',
                 'label' => "Date d'acquisition"
             ])
             ->add('dateF')
-            ->add('nomFormation')
-            ->add('specialite')
-            ->add('niveau')
+            ->add('nomEtablissement')
+            ->add('villeEtablissement')
+            ->add('nomPoste')
+            ->add('mission')
+            ->add('responsable')
             ->add('category')
         ;
     }
@@ -32,7 +31,7 @@ class FormationType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Formation::class,
+            'data_class' => Experience::class,
         ]);
     }
 }
